@@ -99,6 +99,7 @@ endif
 cc = meson.get_compiler('c')
 
 dependencies = [
+	cc.find_library('m'),
     dependency('libavformat', version: '>= 57.33'),
     dependency('libavcodec', version: '>= 57.37'),
     dependency('libavutil'),

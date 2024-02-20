@@ -851,9 +851,9 @@ sc_rotate_point(struct sc_point *point,
                 struct sc_point *pivot,
                 int16_t angle_in_degrees) {
     const double deg_to_rad = M_PI / 180.0;
-    float32_t angle_in_radians = (float32_t)angle_in_degrees * deg_to_rad;
-    float32_t cosine = (float32_t)cos(angle_in_radians);
-    float32_t sine = (float32_t)sin(angle_in_radians);
+    float angle_in_radians = (float)angle_in_degrees * deg_to_rad;
+    float cosine = (float)cos(angle_in_radians);
+    float sine = (float)sin(angle_in_radians);
 
     int32_t x = point->x;
     int32_t y = point->y;
@@ -878,13 +878,13 @@ sc_screen_convert_drawable_to_frame_coords(struct sc_screen *screen,
         .y = h_half,
     };
     int8_t flip_factor = -1;
-    float32_t scale_factor = 100.0 / screen->transform_offsets.scale;
+    float scale_factor = 100.0 / screen->transform_offsets.scale;
 
     // screen->rect must be initialized to avoid a division by zero
     assert(screen->rect.w && screen->rect.h);
 
-    float32_t w_factor = w / (float32_t)screen->rect.w;
-    float32_t h_factor = h / (float32_t)screen->rect.h;
+    float w_factor = w / (float)screen->rect.w;
+    float h_factor = h / (float)screen->rect.h;
     x = (int64_t) (x - screen->rect.x) * w_factor;
     y = (int64_t) (y - screen->rect.y) * h_factor;
     int32_t x_offset = screen->transform_offsets.position.x * w_factor;
